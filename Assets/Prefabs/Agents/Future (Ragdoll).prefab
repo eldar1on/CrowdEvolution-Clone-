@@ -39,8 +39,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1855550506436408548}
-  - component: {fileID: 1773806264884368888}
-  - component: {fileID: 4601700793983360794}
   m_Layer: 0
   m_Name: Future (Ragdoll)
   m_TagString: Untagged
@@ -64,44 +62,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1773806264884368888
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857751672378651462}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f13349cc09b03d447a26b54d406aaa8e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4fe58f41aef33ba459cf0e1909411409, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4601700793983360794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857751672378651462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbd2a28a2b3fb1409a06dc3aa69ff31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animC: {fileID: 0}
-  weaponID: 0
-  agentID: 0
-  isDead: 0
-  _skull: {fileID: 5903799959531025142, guid: 0f593cc1c91ca3849a28a34fe1c81890, type: 3}
-  handPos: {fileID: 1864252372455010954}
-  _ragdoll: {fileID: 9050936073104384186, guid: 93a03a7581755fa4e827c70d88117b02, type: 3}
 --- !u!1 &1857758402071449166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,7 +1683,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06d40dc2e1401784eb420a0d2d5d7235, type: 2}
+  - {fileID: 2100000, guid: 129704b08c93bae4a89513e33c890d5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

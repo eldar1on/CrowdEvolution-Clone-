@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,11 +15,21 @@ public class PlayerManager : MonoBehaviour
     public delegate void OnFire();
     public static event OnFire ShootSmt;
 
+    public delegate void LevelFailed();
+    public static event LevelFailed Fail;
+
+
+    public delegate void LevelCompleted();
+    public static event LevelCompleted Win;
+
+
     public enum gameState
     {
         NotStarted,
         Running,
-        EndGameReach
+        EndGameReach,
+        Failed,
+        Won
     }
 
     public gameState _state;
@@ -29,6 +39,8 @@ public class PlayerManager : MonoBehaviour
 
     public float _time;
     public float _shootInterval;
+
+    public int endGameEnemyAlive;
 
     private void Awake()
     {
@@ -66,26 +78,65 @@ public class PlayerManager : MonoBehaviour
                     _time = 0;
                     ShootSmt();
                 }
-
+                
+                if (AgentPool._agentPool.livingAgents == 0)
+                {
+                    print("EndGame");
+                    Fail();
+                    _state = gameState.Failed;
+                }
                 break;
             case gameState.EndGameReach:
 
                 _time += Time.deltaTime;
-
+                //Oyun sonunda daha seri atış.
                 if (_time > _shootInterval/2)
                 {
                     _time = 0;
                     ShootSmt();
                 }
+                if (AgentPool._agentPool.livingAgents == 0)
+                {
+                    print("EndGame");
+                    Fail();
+                    _state = gameState.Failed;
+                }
+                else if(endGameEnemyAlive <= 0)
+                {
+                    print("You win!");
+                    _state = gameState.Won;
+                    Win();
+                }
+
+
+                break;
+            case gameState.Failed:
+                print("Failed");
+                //Activate End Game UI
+                break;
+
+            case gameState.Won:
+                print("Won");
+                //Activate End Game UI
                 break;
             default:
                 break;
         }
+
+
     }
 
     public void ChangeYear(int yearChange)
     {
         _currentYear += yearChange;
+        if(_currentYear < 0)
+        {
+            _currentYear = 0;
+        }
+        else if(_currentYear > 2000)
+        {
+            _currentYear = 2000;
+        }
         //print("New Current Year :" + _currentYear);
         CheckNewAge();
     }

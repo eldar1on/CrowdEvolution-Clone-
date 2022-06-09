@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,11 +17,20 @@ public class EnemyManager : MonoBehaviour
     private void OnEnable()
     {
         EnemyShoot += Shoot;
+        PlayerManager.Starting += MakeItRain;
     }
 
     private void OnDisable()
     {
         EnemyShoot -= Shoot;
+        PlayerManager.Starting -= MakeItRain;
+    }
+
+
+    void MakeItRain()
+    {
+        //Oyun başladı, sıkabiliriz.
+        _onAir = true;
     }
 
     void Awake()
@@ -31,7 +40,7 @@ public class EnemyManager : MonoBehaviour
 
     void Shoot()
     {
-        //If there is no enemy, dont throw an error...
+        //If there is no enemy, dont throw an error msg...
         print("Enemy shooting...");
     }
 

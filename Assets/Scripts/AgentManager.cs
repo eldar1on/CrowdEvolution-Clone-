@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,12 +35,22 @@ public class AgentManager : MonoBehaviour
     void OnDisable()
     {
         PlayerManager.CheckNewAge -= CheckYear;
+
+        //AgentPool._agentPool.agentAliveCount--;
+        //AgentPool._agentPool.livingAgents--;
     }
 
     void Awake()
     {
         CheckYear();
     }
+
+    public void KillAgent()
+    {
+        _model[_activeModel].Die();
+        gameObject.SetActive(false);
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -80,6 +90,12 @@ public class AgentManager : MonoBehaviour
             Complete();
             PlayerManager.instance._state = PlayerManager.gameState.EndGameReach;
         }
+        else if (other.CompareTag("Bullet"))
+        {
+            print("Bullet to the head.");
+            Destroy(other);
+            _model[_activeModel].Die();
+        }
     }
 
     void CheckYear()
@@ -113,8 +129,6 @@ public class AgentManager : MonoBehaviour
         {
             //print("Check Year called N nuttin happened!");
         }
-
-        
     }
 
     void UpdateModel(playerAge _newAge)
@@ -147,18 +161,6 @@ public class AgentManager : MonoBehaviour
         //_inflate = true;
     }
 
-    /*
-    public void Init(int openPos)
-    {
-        transform.position = AgentPool._agentPool.agentCoordinates[openPos].position;
-        print(AgentPool._agentPool.agentCoordinates[openPos].position);
-        //_inflate = true;
-    }*/
-
-    private void Update()
-    {
-        
-    }
 
     public void GetTarget(Vector3 _position)
     {

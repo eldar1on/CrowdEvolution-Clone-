@@ -26,6 +26,12 @@ namespace PathCreation.Examples
         {
             AgentManager.Complete += PlayerManager_Complete;
             PlayerManager.Starting += PlayerManager_Starting;
+            PlayerManager.Fail += StopFollow;
+        }
+
+        private void StopFollow()
+        {
+            speed = 0;
         }
 
         private void PlayerManager_Starting()
@@ -42,6 +48,7 @@ namespace PathCreation.Examples
         {
             AgentManager.Complete -= PlayerManager_Complete;
             PlayerManager.Starting -= PlayerManager_Starting;
+            PlayerManager.Fail -= StopFollow;
         }
 
 

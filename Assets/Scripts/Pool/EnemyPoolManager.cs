@@ -15,6 +15,12 @@ public class EnemyPoolManager : MonoBehaviour
 
     public GameObject coordinateParent;
 
+
+    public GameObject _Player;
+    public bool checkPosition;
+    public float distanceTreshold;
+    public float distanceToNext;
+
     private void Awake()
     {
         enemyPool = new List<EnemyAgent>();
@@ -42,15 +48,7 @@ public class EnemyPoolManager : MonoBehaviour
             return null;
     }
 
-    void Update()
-    {
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            CreateEnemy();
-        }
-        */
-    }
+
 
     void CreateEnemy()
     {
@@ -67,7 +65,7 @@ public class EnemyPoolManager : MonoBehaviour
         }
 
         newAgent.gameObject.SetActive(true);
-        newAgent.Init(worlPos);
+        //newAgent.Init(worlPos);
 
         //Instantiate(enemyPrefab, worlPos, transform.rotation);
     }

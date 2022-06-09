@@ -1,18 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public static Manager _instance;
+
+    public void LoadScene(int sceneIndex)
     {
-        
+        SceneManager.LoadScene(sceneIndex);
     }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject _winUI;
+    public GameObject _loseUI;
+
+    void OnEnable()
     {
-        
+        _instance = this;
+        PlayerManager.Fail += Failed;
+        PlayerManager.Win += Win;
     }
+
+    void OnDisable()
+    {
+        PlayerManager.Fail -= Failed;
+        PlayerManager.Win -= Win;
+    }
+
+    public void Failed()
+    {
+        _loseUI.SetActive(true);
+    }
+
+    public void Win()
+    {
+        _winUI.SetActive(true);
+    }
+
+    
+
 }

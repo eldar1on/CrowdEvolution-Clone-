@@ -48,7 +48,12 @@ public class Agent : MonoBehaviour
 
     private void PathCompleted()
     {
-        
+        StopRunning();
+    }
+
+    void StopRunning()
+    {
+        _animC.SetTrigger("Idle");
     }
 
     void StartRunning()
@@ -61,6 +66,9 @@ public class Agent : MonoBehaviour
         PlayerManager.ShootSmt -= Shoot;
         PlayerManager.Starting -= StartRunning;
         AgentManager.Complete -= PathCompleted;
+
+        AgentPool._agentPool.agentAliveCount--;
+        
     }
 
     void Shoot()
@@ -73,31 +81,24 @@ public class Agent : MonoBehaviour
     public void AnimShootEvent()
     {
         print("Shooted!");
-        Quaternion faceDirection = transform.localRotation;
+        Quaternion faceDirection = transform.rotation;
         Instantiate(_skull, handPos.position, faceDirection);
     }
 
     public void Die()
     {
-        /*
-        Agent clone = gameObject.GetComponent<Agent>();
-        Agent _dyingCopy = Instantiate(clone, transform.position, Quaternion.identity);
-        _dyingCopy.isDead = true;
-        */
-        //print(_ragdoll.name);
-
+        //**
+        AgentPool._agentPool.livingAgents--;
         GameObject newRagdoll = Instantiate(_ragdoll, transform.position, Quaternion.identity);
 
 
+
         _agentManager = transform.parent.GetComponent<AgentManager>();
-        AgentPool._agentPool.agentAliveCount--;
+
         _agentManager.gameObject.SetActive(false);
 
-        //_agentManager._isAlive = false;
-        //gameObject.SetActive(false);
-
-
-        //clone._animC.SetTrigger("Die");
-
     }
+
+
+    
 }

@@ -12,6 +12,7 @@ public class AgentPool : MonoBehaviour
 
     public int agentCountAtStart = 10;
     public int agentAliveCount = 0;
+    public int livingAgents = 0;
 
     public List<Transform> agentCoordinates;
     public GameObject agentCoordinateParent;
@@ -49,6 +50,7 @@ public class AgentPool : MonoBehaviour
     }
 
     public bool _started;
+
     void Start()
     {
         _started = true;
@@ -88,7 +90,7 @@ public class AgentPool : MonoBehaviour
 
 
         newAgent.gameObject.SetActive(true);
-        
+        livingAgents++;
         agentAliveCount++;
 
     }

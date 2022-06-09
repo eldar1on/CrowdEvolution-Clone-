@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class CollectablePoolManager : MonoBehaviour
 {
-    public Collectable collectablePrefab;
+    public EnemyAgent collectablePrefab;
 
-    public List<Collectable> collectablePool;
+    public List<EnemyAgent> collectablePool;
 
     public int collectableAmounthInitial;
 
@@ -21,17 +21,22 @@ public class CollectablePoolManager : MonoBehaviour
     public float distanceTreshold;
     public float distanceToNext;
 
+
+    
+
+
+
     private void Awake()
     {
-        //Oyun henüz başlamadan, belirttiğimiz kadar collectable spawnlıyoruz.
+        //Oyun henüz başlamadan, belirttiğimiz kadar enemy spawnlıyoruz.
 
         _openCollectableCount = 0;
 
-        collectablePool = new List<Collectable>();
+        collectablePool = new List<EnemyAgent>();
 
         for (int i = 0; i < collectableAmounthInitial; i++)
         {
-            Collectable newCollectable = Instantiate(collectablePrefab);
+            EnemyAgent newCollectable = Instantiate(collectablePrefab);
 
             newCollectable.gameObject.SetActive(false);
             newCollectable.transform.parent = transform;
@@ -43,7 +48,7 @@ public class CollectablePoolManager : MonoBehaviour
 
     void GetCoordinates()
     {
-        //Collectableların yerleşeceği bütün pozisyonları listeliyoruz.
+        //enemylerin yerleşeceği bütün pozisyonları listeliyoruz.
 
         collectableCoordiantes = new List<Transform>();
 
@@ -59,7 +64,7 @@ public class CollectablePoolManager : MonoBehaviour
 
 
 
-    Collectable GetCollectableFromPool()
+    EnemyAgent GetCollectableFromPool()
     {
         //Boştaki collectablelardan almaya çalışıyoruz.
 
@@ -77,7 +82,7 @@ public class CollectablePoolManager : MonoBehaviour
 
     void PositionCollectable()
     {
-        Collectable newCollectable = GetCollectableFromPool();
+        EnemyAgent newCollectable = GetCollectableFromPool();
 
         //print(collectableCoordiantes[_openCollectableCount].position);
 
@@ -87,7 +92,7 @@ public class CollectablePoolManager : MonoBehaviour
         }
 
         newCollectable.gameObject.SetActive(true);
-        newCollectable.Init(collectableCoordiantes[_openCollectableCount].position);
+        newCollectable.Init(collectableCoordiantes[_openCollectableCount].position, collectableCoordiantes[_openCollectableCount].eulerAngles);
 
         _openCollectableCount++;
 

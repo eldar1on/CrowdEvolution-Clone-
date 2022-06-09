@@ -1337,7 +1337,7 @@ MonoBehaviour:
   weaponID: 0
   agentID: 0
   isDead: 0
-  _skull: {fileID: 5903799959531025142, guid: 0f593cc1c91ca3849a28a34fe1c81890, type: 3}
+  _skull: {fileID: 5903799959531025142, guid: c803928249ceafa47ba405e6c80f33a7, type: 3}
   handPos: {fileID: 1842546265927145673}
   _ragdoll: {fileID: 9050936073104384186, guid: 93a03a7581755fa4e827c70d88117b02, type: 3}
 --- !u!1 &1842546265926893103

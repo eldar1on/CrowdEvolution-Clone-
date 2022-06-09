@@ -8,6 +8,9 @@ TagManager:
   - Obstacle
   - Enemy
   - EndGame
+  - Bullet
+  - Sweeper
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

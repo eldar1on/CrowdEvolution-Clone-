@@ -6197,8 +6197,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9050936073104105620}
-  - component: {fileID: 9050936073113782196}
-  - component: {fileID: 6595967567887991573}
   m_Layer: 7
   m_Name: Pirate(Ragdoll)
   m_TagString: Untagged
@@ -6236,41 +6234,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &9050936073113782196
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9050936073104384186}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: a5e7d380c8bf9c8459cf187b3997e9d4, type: 2}
-  m_Controller: {fileID: 9100000, guid: 4fe58f41aef33ba459cf0e1909411409, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6595967567887991573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9050936073104384186}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbd2a28a2b3fb1409a06dc3aa69ff31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animC: {fileID: 0}
-  weaponID: 0
-  isDead: 0
-  _ragdoll: {fileID: 0}
 --- !u!1 &9050936073104384324
 GameObject:
   m_ObjectHideFlags: 0
